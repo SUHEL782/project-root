@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-
 LOG_FILE="logs/access.log"
 
 
