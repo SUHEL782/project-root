@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-
 LOG_FILE="logs/access.log"
 
+cut -d ' ' -f 1 "$LOG_FILE" \
+  | sort \
+  | uniq -c \
+  | sort -k1,1nr -k2,2 \
+  | head -3 \
+  | awk '{print $1, $2}'
 
-# BUGS:
-# 1. uniq used on unsorted input
-# 2. Incorrect sorting direction
-# 3. Missing secondary sort key
-
-
-cut -d ' ' -f 1 "$LOG_FILE" | uniq -c | sort -n | tail -3
